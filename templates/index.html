@@ -94,10 +94,10 @@
         <nav class="topbar-nav">
             <ul class="metismenu" id="menu">
                 <li>
-                    <a href="javascript:;" class="has-arrow">
-                        <div class="parent-icon"><i class="bx bx-home-alt"></i>
+                    <a class="has-arrow" href="{% url 'add_act' %}">
+                        <div class="parent-icon"><i class="bx bx-home-alt"></i> Добавить акт
                         </div>
-                        <div class="menu-title">Dashboard</div>
+                        <div class="menu-title"></div>
                     </a>
                 </li>
                 <li>
@@ -188,13 +188,14 @@
                 {#							</div>#}
             </div>
             <div class="row">
-            <div class="col-12 col-lg-4">
+                <div class="col-12 col-lg-4">
                     <div class="card radius-15">
                         <div class="card-body">
                             <div class="d-flex mb-2">
                                 <div>
                                     <p class="mb-0 font-weight-bold text-white"></p>
-                                    <a class="mb-0 text-white" style="font-size: 1.55em" data-tooltip="Всплывающая подсказка"  href="{% url 'task2' %}">Требования
+                                    <a class="mb-0 text-white" style="font-size: 1.55em"
+                                       data-tooltip="Всплывающая подсказка" href="{% url 'task2' %}">Требования
                                         нормативных актов, закрывающиеся выбранным предложением</a>
                                 </div>
                                 <div class="ml-auto align-self-end">
@@ -205,8 +206,9 @@
                         </div>
                     </div>
                 </div>
+            </div>
         </div>
-        </div>
+
         <!--end row-->
         {#					<div class="row">#}
         {#						<div class="col-12 col-lg-8">#}

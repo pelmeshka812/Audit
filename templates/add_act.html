@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-6 ">
+                <div class="bx bx-home-alt">
+                    <div class="form-group">
+                        <h1>Нормативный акт</h1>
+                        <form method="post">{% csrf_token %}
+                            {{ form_act|crispy }}
+                        </form>
+                        <h1>NEW PROCESS</h1>
+                        <form method="post">{% csrf_token %}
+                            {{ form_process|crispy }}
+
+                        </form>
+                        <h1>NEW SUBPROCESS</h1>
+                        <form method="post">{% csrf_token %}
+                            {{ form_subprocess|crispy }}
+
+                        </form>
+                        <h1>NEW MEASURE</h1>
+                        <form method="post">{% csrf_token %}
+                            {{ form_measure|crispy }}
+                        </form>
+                        <h1>ENTER PROTECTION LEVEL</h1>
+                        <form method="post">{% csrf_token %}
+                            {{ form_level|crispy }}
+                            <button type="submit" class="btn btn-light">SAVE</button>
+                        </form>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+{% endblock %}

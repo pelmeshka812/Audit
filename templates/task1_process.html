@@ -1,18 +1,9 @@
 {% extends 'base.html' %}
+
 {% block content %}
-    <h1>Task 1 </h1>
+  <div class="">
+    <h2>{{ act }}</h2>
+    <p>{{ post.body }}</p>
+  </div>
 
-{#    {% if book_list %}#}
-    <ul>
-
-      {% for act in act_list %}
-      <li>
-        <a href="">{{ act.name }}</a>
-      </li>
-      {% endfor %}
-
-    </ul>
-{#    {% else %}#}
-{#      <p>There are no books in the library.</p>#}
-{#    {% endif %} #}
-{% endblock %}
+{% endblock content %}
