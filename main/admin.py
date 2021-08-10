@@ -14,7 +14,7 @@ from main.models import Act, Product, Process, ProtectionLevel, Measure, DeviceT
 
 @admin.register(Act)
 class ActAdmin(admin.ModelAdmin):
-    list_display = ('name', )
+    list_display = ('name',)
 
 
 @admin.register(Product)
@@ -29,7 +29,7 @@ class ProcessAdmin(admin.ModelAdmin):
 
 @admin.register(SubProcess)
 class SubProcessAdmin(admin.ModelAdmin):
-    list_display = ('identifier', 'name', 'act_id',)
+    list_display = ('identifier', 'name',)
 
 
 @admin.register(ProtectionLevel)
@@ -39,7 +39,10 @@ class ProtectionLevelAdmin(admin.ModelAdmin):
 
 @admin.register(Measure)
 class MeasureAdmin(admin.ModelAdmin):
-    list_display = ('name', 'description', 'level', 'process',)
+    list_display = ('name', 'description',)
+
+    def get_level(self, obj):
+        return "\n".join([p.level for p in obj.level.all()])
 
 
 @admin.register(DeviceType)

@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-6 ">
+                <div class="bx bx-home-alt">
+                    <div class="form-group">
+                        <h1>Процесс</h1>
+                        <form method="post">{% csrf_token %}
+                            {{ form|crispy }}
+                            <button type="submit" class="btn btn-light">NEXT</button>
+{#                             <a type="submit" href="{% url 'add_process_form' %}" >Добавить еще процесс</a>#}
+                        </form>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+{% endblock %}

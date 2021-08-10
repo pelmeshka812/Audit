@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-6 ">
+                <div class="bx bx-home-alt">
+                    <div class="form-group">
+                        <h1>Поздравляю! Вы успешно добавили все компоненты</h1>
+                             <a type="submit" href="{% url 'add_act_form' %}" >Добавить еще компоненты</a>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+{% endblock %}

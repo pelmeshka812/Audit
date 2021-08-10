@@ -18,7 +18,7 @@ class Product(models.Model):
 class SubProcess(models.Model):
     identifier = models.CharField(max_length=6, blank=True)
     name = models.CharField(max_length=250)
-    act_id = models.ForeignKey(Act, on_delete=models.CASCADE, blank=True)
+    measure = models.ManyToManyField('Measure')
 
     def __str__(self):
         return self.name
@@ -28,6 +28,7 @@ class Process(models.Model):
     identifier = models.CharField(max_length=6, blank=True)
     name = models.CharField(max_length=250)
     subprocess = models.ManyToManyField(SubProcess)
+    act_id = models.ForeignKey(Act, on_delete=models.CASCADE, null=True)
 
     def __str__(self):
         return self.name
@@ -44,8 +45,7 @@ class ProtectionLevel(models.Model):
 class Measure(models.Model):
     name = models.CharField(max_length=250)
     description = models.TextField(max_length=500)
-    level = models.ForeignKey(ProtectionLevel, on_delete=models.CASCADE)
-    process = models.ForeignKey(Process, on_delete=models.CASCADE)
+    level = models.ManyToManyField(ProtectionLevel)
 
     def __str__(self):
         return self.name
