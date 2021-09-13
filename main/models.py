@@ -18,7 +18,7 @@ class Product(models.Model):
 class SubProcess(models.Model):
     identifier = models.CharField(max_length=6, blank=True)
     name = models.CharField(max_length=250)
-    measure = models.ManyToManyField('Measure')
+    measures = models.ManyToManyField('Measure')
 
     def __str__(self):
         return self.name
@@ -27,8 +27,8 @@ class SubProcess(models.Model):
 class Process(models.Model):
     identifier = models.CharField(max_length=6, blank=True)
     name = models.CharField(max_length=250)
-    subprocess = models.ManyToManyField(SubProcess)
-    act_id = models.ForeignKey(Act, on_delete=models.CASCADE, null=True)
+    subprocesses = models.ManyToManyField(SubProcess, related_name='subprocesses')
+    act_id = models.ForeignKey(Act, on_delete=models.CASCADE, null=True, related_name='processes')
 
     def __str__(self):
         return self.name
@@ -45,7 +45,7 @@ class ProtectionLevel(models.Model):
 class Measure(models.Model):
     name = models.CharField(max_length=250)
     description = models.TextField(max_length=500)
-    level = models.ManyToManyField(ProtectionLevel)
+    levels = models.ManyToManyField(ProtectionLevel)
 
     def __str__(self):
         return self.name
@@ -59,10 +59,16 @@ class DeviceType(models.Model):
 
 
 class Sentence(models.Model):
-    sentence = models.CharField(max_length=300)
-    type = models.ForeignKey(DeviceType, on_delete=models.CASCADE)
-    measure = models.ForeignKey(Measure, on_delete=models.CASCADE)
+    title = models.CharField(max_length=300)
+    type = models.ForeignKey(DeviceType, on_delete=models.CASCADE, related_name='sentences')
+    measure = models.ForeignKey(Measure, on_delete=models.CASCADE, related_name='sentences')
     description = models.TextField(max_length=500)
 
     def __str__(self):
-        return self.sentence
+        return self.title
+
+
+class Cert(models.Model):
+    name = models.CharField(max_length=300)
+    date = models.CharField(max_length=300)
+    sentence = models.ForeignKey(Sentence, on_delete=models.CASCADE, related_name='sentences')

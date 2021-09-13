@@ -4,15 +4,50 @@ from django.shortcuts import render, get_object_or_404
 from django.views.generic import ListView, DetailView, FormView, CreateView
 
 from main.forms import ActForm, ProcessForm, SubProcessForm, MeasureForm, ProtectionLevelForm
-from main.models import Act, Product, Process, Sentence, SubProcess, Measure, ProtectionLevel
+from main.models import Act, Product, Process, Sentence, SubProcess, Measure, ProtectionLevel, DeviceType, Cert
 
 
-# @login_required(login_url='/accounts/login/')
 class ActView(ListView):
     model = Act
-    # queryset = Act.objects.all()
     template_name = 'task1.html'
-    # Act.objects.filter()
+
+
+# class SentenceListView(ListView):
+#     model = Sentence
+#     template_name = 'task2_sentence.html'
+
+
+class TypeListView(ListView):
+    model = DeviceType
+    template_name = 'task2.html'
+
+
+class TypeDetail(DetailView):
+    model = DeviceType
+    template_name = 'task2_sentence.html'
+
+
+class ActDetail(DetailView):
+    model = Act
+    template_name = 'act_detial.html'
+
+    # def get_object(self):
+    #     return get_object_or_404(Act, id=self.request.act.process_id)
+
+
+class ProcessDetail(DetailView):
+    model = Process
+    template_name = 'process_detail.html'
+
+
+class SubProcessDetail(DetailView):
+    model = SubProcess
+    template_name = 'subprocess_detail.html'
+
+
+class MeasureDetail(DetailView):
+    model = Measure
+    template_name = 'measure_detail.html'
 
 
 class ProductView(ListView):
@@ -48,9 +83,16 @@ class MeasureFormView(CreateView):
     success_url = 'protection_level_form'
 
 
-class ProtectionLevelFormView(CreateView):  
+class ProtectionLevelFormView(CreateView):
     model = ProtectionLevel
     template_name = 'add_protection_level_form.html'
+    fields = '__all__'
+    success_url = 'cert'
+
+
+class CertView(CreateView):
+    model = Cert
+    template_name = 'add_cert_form.html'
     fields = '__all__'
     success_url = 'success'
 

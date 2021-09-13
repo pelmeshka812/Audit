@@ -1,6 +1,6 @@
 from django.forms import ModelForm
 
-from main.models import Act, Process, SubProcess, Measure, ProtectionLevel
+from main.models import Act, Process, SubProcess, Measure, ProtectionLevel, Cert
 
 
 class ActForm(ModelForm):
@@ -30,4 +30,10 @@ class MeasureForm(ModelForm):
 class ProtectionLevelForm(ModelForm):
     class Meta:
         model = ProtectionLevel
+        fields = '__all__'
+
+
+class CertForm(ModelForm):
+    class Meta:
+        model = Cert
         fields = '__all__'

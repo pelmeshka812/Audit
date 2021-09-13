@@ -1,18 +1,11 @@
 {% extends 'base.html' %}
 {% block content %}
-    <h1>Task 2 </h1>
-
-{#    {% if book_list %}#}
+    <h1>Выберите тип средства: </h1>
     <ul>
-
-      {% for sentence in sentence_list %}
+      {% for type in devicetype_list %}
       <li>
-        <a href="">{{ sentence.name }}</a>
+        <a href="{% url 'type_detail' type.id %}">{{ type.name }}</a>
       </li>
       {% endfor %}
-
     </ul>
-{#    {% else %}#}
-{#      <p>There are no books in the library.</p>#}
-{#    {% endif %} #}
 {% endblock %}

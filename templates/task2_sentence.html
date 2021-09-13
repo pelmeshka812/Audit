@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h1>Закрывающие предложения </h1>
+    <ul>
+      {% for sentence in devicetype.sentences.all %}
+      <li>
+        <a href="">{{ sentence.title }}</a>
+      </li>
+      {% endfor %}
+    </ul>
+{% endblock %}

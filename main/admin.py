@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from main.models import Act, Product, Process, ProtectionLevel, Measure, DeviceType, Sentence, SubProcess
+from main.models import Act, Product, Process, ProtectionLevel, Measure, DeviceType, Sentence, SubProcess, Cert
 
 
 # admin.site.register(Act)
@@ -52,4 +52,9 @@ class DeviceTypeAdmin(admin.ModelAdmin):
 
 @admin.register(Sentence)
 class SentenceAdmin(admin.ModelAdmin):
-    list_display = ('sentence', 'type', 'measure', 'description',)
+    list_display = ('title', 'type', 'measure', 'description',)
+
+
+@admin.register(Cert)
+class CertAdmin(admin.ModelAdmin):
+    list_display = ('name', 'date', 'sentence')
